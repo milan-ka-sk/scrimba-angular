@@ -13,15 +13,22 @@ export class CustomersListComponent implements OnInit {
   customersOrderTotal: number = 5;
   currencyCode: string = 'USD';
 
-  @Input() customers: ICustomer[];
-  // @Input('data') customers: ICustomer[]; // alternative with alias
+  private _customers: ICustomer[] = [];
+  @Input() get customers(): ICustomer[] {
+      return this._customers;
+  }
+  
+  set customers(value: ICustomer[]) {
+      if (value) {
+          this.filteredCustomers = this._customers = value;
+          this.calculateOrders();
+      }
+  }
   
   constructor() { }
 
   ngOnInit() {
-    // temporary setting up data
-    this.filteredCustomers = this.customers;
-    this.calculateOrders();
+
   }
 
   calculateOrders() {
