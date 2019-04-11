@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { CustomersModule } from './customers/customers.module';
+import { SharedModule } from  './shared/shared.module';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +12,7 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule, CustomersModule
+    BrowserModule, CustomersModule, SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
