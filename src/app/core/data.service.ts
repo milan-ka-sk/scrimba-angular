@@ -14,6 +14,13 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  getCustomers() : Observable<ICustomer[]> {
+    return this.http.get<ICustomer[]>(this.baseUrl + 'customers.json')
+        .pipe(
+            catchError(this.handleError)
+        );
+  }
+
   getCustomer(id: number) : Observable<ICustomer> {
     return this.http.get<ICustomer[]>(this.baseUrl + 'customers.json')
       .pipe(
